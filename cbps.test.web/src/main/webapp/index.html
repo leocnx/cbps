@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Test interface</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+
+<script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		alert("Request Server...");
+
+		var rateItems = [];
+		var rateItem = {
+        };
+		rateItems.push(rateItem);
+		
+        var rateCode = "888888888888";
+
+		var postData = {
+			rateCode : rateCode,
+			rateItems : rateItems
+		};
+		alert(JSON.stringify(postData));
+		$.ajax({
+			type : "post",
+			url : "http://localhost:8080/cbps.web.service/api/rate",
+			contentType : "application/json",
+			data : JSON.stringify(postData),
+			dataType : "json",
+			success : function(retData) {
+				alert(retData.id);
+			}
+		});
+	});
+</script>
+</head>
+<body>Test interface.
+</body>
+</html>
